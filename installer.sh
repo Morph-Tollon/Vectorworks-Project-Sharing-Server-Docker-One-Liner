@@ -1,5 +1,20 @@
 #!/bin/bash
 
+## Check if docker is installed from the correct source (i.e., not the default repo) and that docker compose is available. If not, provide instructions to install it.
+
+if ! command -v docker &> /dev/null; then
+    echo "Docker is not installed. Please install Docker from https://docs.docker.com/engine/install/ubuntu/ and try again."
+    exit 1
+fi
+
+if ! command -v docker compose &> /dev/null; then
+    echo "Docker Compose is not installed. Please install it from https://docs.docker.com/engine/install/ubuntu/ and try again."
+    exit 1
+fi
+
+
+
+
 ## Flash up a screen to allow the user to select the version they desire
 ## Wrapped in an 'if' statement to gracefully exit if the user hits "Cancel"
 if ! CHOICE=$(whiptail --title "Edition Selection" \
@@ -85,10 +100,10 @@ echo "Installation complete! Start the container now? [Y/n]"
 read -r START_CHOICE
 if [[ "$START_CHOICE" =~ ^[Yy]$ || -z "$START_CHOICE" ]]; then
     echo "Starting the Vectorworks Project Sharing Server container..."
-    docker-compose -f ~/docker-compose.yml up -d
+    docker compose -f ~/docker-compose.yml up -d
     ## Get IP address of the host machine to display to the user
     HOST_IP=$(hostname -I | awk '{print $1}')
     echo "Container started. Access it at http://$HOST_IP:22001 within vectorworks."
 else
-    echo "You can start the container later by running: docker-compose -f ~/docker-compose.yml up -d"
+    echo "You can start the container later by running: docker compose -f ~/docker-compose.yml up -d"
 fi
