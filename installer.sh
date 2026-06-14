@@ -81,4 +81,14 @@ echo "Cleaning up..."
 rm -rf /tmp/vectorworks_pss.zip
 rm -rf /tmp/vectorworks_pss
 
-echo "Installation complete! You can now run 'docker compose up -d' in your home directory."
+echo "Installation complete! Start the container now? [Y/n]"
+read -r START_CHOICE
+if [[ "$START_CHOICE" =~ ^[Yy]$ || -z "$START_CHOICE" ]]; then
+    echo "Starting the Vectorworks Project Sharing Server container..."
+    docker-compose -f ~/docker-compose.yml up -d
+    ## Get IP address of the host machine to display to the user
+    HOST_IP=$(hostname -I | awk '{print $1}')
+    echo "Container started. Access it at http://$HOST_IP:22001 within vectorworks."
+else
+    echo "You can start the container later by running: docker-compose -f ~/docker-compose.yml up -d"
+fi
