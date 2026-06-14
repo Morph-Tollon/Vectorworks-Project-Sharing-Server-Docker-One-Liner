@@ -7,12 +7,12 @@ Simply run the below script to install the image and create the docker compose f
 
 **With Curl**
 ```sh
-curl -sSL https://raw.githubusercontent.com/Morph-Tollon/Vectorworks-Project-Sharing-Server-Docker-One-Liner/refs/heads/main/installer.sh | bash
+bash <(curl -sSL https://raw.githubusercontent.com/Morph-Tollon/Vectorworks-Project-Sharing-Server-Docker-One-Liner/main/installer.sh)
 ```
 
 **With Wget**
 ```
-wget -qO- https://raw.githubusercontent.com/Morph-Tollon/Vectorworks-Project-Sharing-Server-Docker-One-Liner/refs/heads/main/installer.sh | bash
+bash <(wget -qO- https://raw.githubusercontent.com/Morph-Tollon/Vectorworks-Project-Sharing-Server-Docker-One-Liner/refs/heads/main/installer.sh)
 ```
 
 
