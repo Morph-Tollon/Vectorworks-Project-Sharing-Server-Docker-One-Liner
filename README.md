@@ -15,8 +15,11 @@ curl -sSL https://raw.githubusercontent.com/Morph-Tollon/Vectorworks-Project-Sha
 wget -qO- https://raw.githubusercontent.com/Morph-Tollon/Vectorworks-Project-Sharing-Server-Docker-One-Liner/refs/heads/main/installer.sh | bash
 ```
 
+
+
+
 ## Configuration
-Simply edit the `.env` file to change where projects and logs are stored. This can be done with the command below
+By default, the sever will store project files and logs in the current user's home folder, however this can be changed by editing the `.env` file created during installation. e.g.
 ```
 nano .env
 ```
